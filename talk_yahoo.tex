@@ -89,7 +89,7 @@
 \def\dashint{\Xint-}
 \usepackage{graphicx} % Allows including images
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
-
+\mode<presentation>{}
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -122,10 +122,12 @@ Partial differential equations (PDEs) are used to describe many phenomenons.  Ma
 \begin{equation*}
 \partial_t u = \sum_{i=1}^3\frac{\partial^2 u }{\partial x_i^2} = \Delta u
 \end{equation*}
+\pause
 \item Fluid mechanics: Naiver-Stokes equation
 \begin{align*}
 \partial_t u + (u\cdot\nabla)u - \Delta u = -\nabla p.
 \end{align*}
+\pause
 \item Quantum mechanics, electrodynamics, image processing,\ldots.
 \end{itemize} 
 
@@ -161,8 +163,11 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \column{0.5\textwidth}
 \begin{itemize}
 \item emails arrive one by one
+\pause
 \item spam detector makes prediction for each of them: {\color{blue}spam or not}
+\pause
 \item sometimes get {\color{blue}feedback} from users
+\pause
 \item make better detection next time  
 \end{itemize}
 
@@ -181,8 +186,11 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \column{0.5\textwidth}
 \begin{itemize}
 \item users visit Netflix /Amazon/\ldots
+\pause
 \item movies/products/\ldots are recommended 
+\pause
 \item users {\color{blue}click or not}
+\pause
 \item make better recommendation next time   
 \end{itemize}
 
@@ -194,12 +202,13 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \begin{frame}
 \frametitle{Motivation}
 \begin{itemize}
-\item PAC learning:
+\item Batch learning:
 \begin{itemize}
 \item distribution fixed over time (training and test)
 \item i.i.d. assumptions
 \item a fixed predictor 
 \end{itemize}
+\pause
 \item Online learning:
 \begin{itemize}
 \item no distribution assumption
@@ -223,12 +232,14 @@ and $$u = g\quad \text{on}\quad S_1.$$
 	\item which route to drive home
 	\item \ldots
 	\end{itemize}
+\pause
 \item Given: advice from a set of experts
 	\begin{itemize}
 	\item financial adviser
 	\item Route 1, Route I-95, Route 295,\ldots
 	\item \ldots
 	\end{itemize}
+\pause	
 \item Question:
 	\underline{How to combine advice and make smart choices?}
 \end{itemize}
@@ -243,10 +254,15 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \item Set up:
 \begin{itemize}
 \item Predict an unknown sequence $y_1, y_2, \ldots,$ where $y_i\in\{0,1\}.$
+\pause
 \item $N$ experts provide advice $(f_{1,t},f_{2,t},\ldots, f_{N,t})$
+\pause
 \item A forecaster makes her guess $\hat{p}_t\in\{0,1\}$ for $y_t$ 
+\pause
 \item True $y_t$ is revealed and find if $\hat{p}_t = y_t$. 
+\pause
 \item Know that one of the experts makes no mistakes.
+\pause
 \end{itemize}
 \item Goal: bound the number of the mistakes made by the forescaster
 \end{itemize}
@@ -257,9 +273,13 @@ and $$u = g\quad \text{on}\quad S_1.$$
 {\bf Algorithm:}
 \begin{itemize}
 \item at time $t$, expert $i$ has weight $w_i^t$
+\pause
 \item originally, $w_i^0 = 1, \forall i\in[1,N]$
+\pause
 \item prediction according to the weighted majority 
+\pause
 \item update each wrong expert   $w_i^t = 0$
+\pause
 \end{itemize}
 {\bf Conclusion}: the number of mistakes made by the forecaster is bounded by {\color{red}$[\log_2 N]$}.
 \end{frame}
@@ -268,11 +288,14 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \frametitle{Proof}:
 \begin{itemize}
 \item let $w_m$ be the sum of the weight of all experts after the forecaster has made $m$ mistakes.
+\pause
 \item Initially, $w_0 = N.$
+\pause
 \item When the forecaster make her $m$th mistakes, at least half of the experts have been always correct make their first mistake
 \begin{equation*}
 w_m \le \frac{w_{m-1}}{2}\Longrightarrow w_m\le \frac{w_0}{2^m}.
 \end{equation*} 
+\pause
 \item $w_i =1$  for some $i$
 \begin{equation*}
 m\le [\log_2 N].
@@ -285,6 +308,7 @@ m\le [\log_2 N].
 \frametitle{More general setting:}
 \begin{itemize}
 \item Do not know there is one expert who makes no mistakes. 
+\pause
 \item Weighted Majority Algorithm:
 \begin{itemize}
 	\item at any time, expert $i$ has weight $w_i^t$.
@@ -293,6 +317,7 @@ m\le [\log_2 N].
 	\item weight of each wrong expert updated ($\beta\in(0,1)$)
 	$$w_i^{t+1}\leftarrow w_i^t\beta.$$
 \end{itemize}
+\pause
 \item Theorem: let $m_i^t$ be the number of mistakes made by expert $i$ till time $t$ and $m^t$ be the number of mistakes made by the WM algorithm. Then
 $$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$$
 \begin{itemize}
@@ -304,11 +329,14 @@ $$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$
 
 
 \begin{frame}
-\frametitle{Remarks}:
+\frametitle{Remarks:}
 \begin{itemize}
 \item Linear dependence on the best expert
+\pause
 \item Independent of the number of predictions
+\pause
 \item Independent of the choice of sequence of outcomes
+\pause
 \item Mild dependence on the number of the experts
 \end{itemize}
 
@@ -331,9 +359,10 @@ $$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$
 	\item{receive label $y_t\in Y$}
 	\item{incur loss $L(y_t,\hat{y}_t)$}
 	\end{itemize}
+\pause
 \item {\color{red}Objective:} minimize regret, i.e., difference of total loss incurred and that of best exeprt:
 $$Regret(T) = \sum_{t=1}^TL(y_t,\hat{y}_t)-\min_{i\in[1,N]}\sum_{t=1}^TL(y_t,\hat{y}_{t,i}).$$
-	
+\pause	
 \item Goal: obtain {\color{red}sublinear regret} to the {\color{red}best expert}. (top 10 experts, any competitor, etc. )
 $$\lim_{T\to \infty}\frac{Regret(T)}{T} = 0.$$
 \end{itemize}
@@ -353,6 +382,7 @@ where $L_{t,i}$ is total loss incurred by expert $i$ till time $t$
 \item prediction:
 $$\hat{y_t} = \frac{\sum_{i=1}^Nw_{i}^ty_{t,i}}{\sum_{i=1}^Nw_{i}^t}.$$ 
 \end{itemize}
+\pause
 \item Theorem: Assume $L$ is convex in its first argument and takes values in $[0,1]$. Then for any $T$
 $$Regret(T)\le \frac{\sqrt{2}}{\sqrt{2}-1}\sqrt{(T/2)\log_2 N}+\sqrt{\log_2 N/2}.$$
 
@@ -366,7 +396,9 @@ $$Regret(T)\le \frac{\sqrt{2}}{\sqrt{2}-1}\sqrt{(T/2)\log_2 N}+\sqrt{\log_2 N/2}
 \begin{itemize}
 \item When the loss is between $[0,1]$ 
 $$Regret(T) = O(\sqrt{(\log N) T}).$$
+\pause
 \item The bound can be improved if more information is known, e.g., if the loss functions are special, $L_2$ loss, $L_1$ loss, 
+\pause
 \item In general, the bound is asymptotically optimal. 
 
 \end{itemize}
@@ -377,9 +409,15 @@ $$Regret(T) = O(\sqrt{(\log N) T}).$$
 
 
 \begin{frame}
-\frametitle{Active research area, but connection to PDEs?}
+\frametitle{Active research area: literatures}
 \begin{itemize}
-\item ... who did what
+\item Littlestone and Warmuth develop {\color{blue}weighted majority algorithm}
+\item Cesa-Bianchi et al. obtain minimax regret bounded by $\sqrt{(T/2)\log N}.$
+\item Cesa-Bianchi and Lugosi connected the regret with the Rademacher Complexity of the set of experts.
+\item Even-Dar et al. considered regret to the average
+
+\item Rakhlin et al. developed {\color{blue}Sequential Rademacher Complexity} to study online learning.
+\item \ldots
 \end{itemize}
 
 
@@ -393,9 +431,12 @@ $$Regret(T) = O(\sqrt{(\log N) T}).$$
 \frametitle{A naive prediction problem (T.Cover, 1965)}
 \begin{itemize}
 \item Predict $y_1,y_2,\ldots$, where $y_t\in\{-1,1\}$ ({\color{blue}stock goes up or down}). 
-\item Forecaster makes prediction $\hat{p}_t\in[-1,1]$ ({\color{blue}buy/sell $\hat{p}_1$ shares of stocks}) according to algorithm $\hat{P}$. 
+\pause
+\item Forecaster makes prediction $\hat{p}_t\in[-1,1]$ ({\color{blue}buy/sell $\hat{p}_1$ shares of stocks}) according to some algorithm $\hat{P}$. 
+\pause
 \item At each time $t$, investor loss (or gain) $-\hat{p}_ty_t$. Cumulative loss (or gain)
 $$L(\hat{P},y_T) := -\sum_{t=1}^T\hat{p}_ty_t$$
+\pause
 \item Two naive experts: one always predicts 1 ({\color{blue}always goes up}); the other one always predicts -1({\color{blue}always goes down}).
 \end{itemize}
 Cover proved $$Regret(T) = \Theta(\sqrt{T}).$$
@@ -407,7 +448,9 @@ Cover proved $$Regret(T) = \Theta(\sqrt{T}).$$
 This problem was considered by Kohn using PDE technique.  
 \begin{itemize}
 \item Instead of proposing an algorithm and then proving the asymptotic bound, PDE method focuses on the optimal strategy
+\pause
 \item Typical Goal: minimize the regret with respect to the best performing expert.
+\pause
 \item More general goal: minimize the worst case value of 
 $$\phi(\text{regret with respect to expert ``1'', regret with respect to expert ``-1''})$$
 at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \min\{x_1,x_2\}$.)
@@ -420,8 +463,11 @@ at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \min\{x_1,x_2\}$.)
 \frametitle{Two very simple experts}
 Essentially,  the problem is an optimal control problem:
 \begin{itemize}
+\pause
 \item {\color{red}state space:}$$(x_1,x_2) = (\text{regret w.r.t ``1'' expert, regret w.r.t ``-1'' expert}).$$
+\pause
 \item {\color{red}control:} prediction $\hat{p}_t\in[-1,1]$ ({\color{blue}investor's purchase bounded by 1}) 
+\pause
 \item {\color{red}value function:} $v(x,t) = $ optimal time $T$ result, starting from relative regrets $x = (x_1,x_2)$ at time $t$. 
 \end{itemize}
 
@@ -453,7 +499,9 @@ Hence the dynamical programming principle:
 \begin{frame}
 \begin{itemize}
 \item Want to know how the regret accumulates as $T\to \infty$.
+\pause
 \item To access this question, it is natural to rescale the problem and look for a continuum limit.
+\pause
 \item Our scaling is like the passage from random walk to Brownian motion.
  \begin{itemize}
  \item Let $\xi_1,\xi_2,\ldots$ be i.i.d. random variable with mean 0 and variance 1. For each $n$, define a continuous-time stochastic processes $\{W_n(t)\}$
@@ -471,6 +519,7 @@ Then $W_n(t)\to W_t,$ where $W_t$ is a standard Brownian motion.
 \begin{align*}
 w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2)
 \end{align*}
+\pause
 \item We expect as $\epsilon\to 0$, $w^\epsilon(x,t)\to w(x,t)$ and $w$ solves some PDEs.
 \end{itemize}
 
@@ -489,80 +538,84 @@ The partial differential equation is the {\color{red}Hamilton-Jacobi-Bellman} eq
 	where $\nabla^\perp w = (\partial_2 w,-\partial_1 w).$ Prescribe the final value $w = \phi$ at $T$.
 \end{enumerate}
 \end{frame}
-\begin{frame}
-\frametitle{More detailed derivation of the PDE}
-Dynamical programming principle:
-$$w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2)$$
-Taylor's expansion:
-\begin{align*}
-&w(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2) \\
-&= w(x_1,x_2,t) + \epsilon b(1-p)\partial_1w -\epsilon b(1+p)\partial_2 w+ \partial_t w\epsilon^2 \\
-&+\frac{1}{2}\partial_{11}w\epsilon^2 b^2(1-p)^2-\partial_{12}w\epsilon^2 b^2(1+p)(1-p)+\frac{1}{2} \partial_{22}w\epsilon^2b^2(1+p)^2.
-\end{align*}
-\end{frame}
+%\begin{frame}
+%\frametitle{More detailed derivation of the PDE}
+%Dynamical programming principle:
+%$$w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2)$$
+%Taylor's expansion:
+%\begin{align*}
+%&w(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2) \\
+%&= w(x_1,x_2,t) + \epsilon b(1-p)\partial_1w -\epsilon b(1+p)\partial_2 w+ \partial_t w\epsilon^2 \\
+%&+\frac{1}{2}\partial_{11}w\epsilon^2 b^2(1-p)^2-\partial_{12}w\epsilon^2 b^2(1+p)(1-p)+\frac{1}{2} \partial_{22}w\epsilon^2b^2(1+p)^2.
+%\end{align*}
+%\end{frame}
 
-\begin{frame}
-After substitution and reorganization:
-\begin{align*}
-&0\approx \max_{|p|\le 1}\min_{b = \pm 1}\{\epsilon b[(1-p)\partial_1 w-(1+p)\partial_2 w]\\
-&\epsilon^2 b^2 [\frac{1}{2}\partial_{11}w(1-p)^2 -\partial_{12}w(1-p)(1+p) + \frac{1}{2}\partial_{22}w(1+p)^2 + \partial_t w]\}
-\end{align*}
-$O(\epsilon)$ terms vanishes and obtain
-\begin{align*}
-p = \frac{\partial_1 w-\partial_2 w}{\partial_1w +\partial_2 w}.
-\end{align*}
-Note: we expect $\partial_1 w >0$ and $\partial_2 w>0$, which implies $|p|\le 1$. 
-
-\end{frame}
+%\begin{frame}
+%After substitution and reorganization:
+%\begin{align*}
+%&0\approx \max_{|p|\le 1}\min_{b = \pm 1}\{\epsilon b[(1-p)\partial_1 w-(1+p)\partial_2 w]\\
+%&\epsilon^2 b^2 [\frac{1}{2}\partial_{11}w(1-p)^2 -\partial_{12}w(1-p)(1+p) + \frac{1}{2}\partial_{22}w(1+p)^2 + \partial_t w]\}
+%\end{align*}
+%$O(\epsilon)$ terms vanishes and obtain
+%\begin{align*}
+%p = \frac{\partial_1 w-\partial_2 w}{\partial_1w +\partial_2 w}.
+%\end{align*}
+%Note: we expect $\partial_1 w >0$ and $\partial_2 w>0$, which implies $|p|\le 1$. 
+%
+%\end{frame}
 
 \begin{frame}
 \frametitle{Conclusion}
-Under some assumptions on the terminal data $\phi$, we can show that
-\begin{itemize}
-\item solution exists under very general conditions on $\phi$
-\item $w$ is pretty regular or $C^k$ for some $k\ge 0$ 
-\item $|\nabla w|\neq 0$
-\item $w_t<0$
-\end{itemize}
-Convergence result:
+%Under some assumptions on the terminal data $\phi$, we can show that
+%\begin{itemize}
+%\item solution exists under very general conditions on $\phi$
+%\item $w$ is pretty regular or $C^k$ for some $k\ge 0$ 
+%\item $|\nabla w|\neq 0$
+%\item $w_t<0$
+%\end{itemize}
+%Convergence result:
 \begin{itemize}
 \item if $\phi$ smooth
 \begin{align*}
 \|w^\epsilon(x,t)-w(x,t)\|\le C\epsilon,
 \end{align*}
 where $C$ independent of $t$.
-\item if $\phi(x) = \max\{x_1,x_2\}$
+\item if $\phi(x) = \min\{x_1,x_2\}$
 \begin{align*}
 \|w^\epsilon(x,t)-w(x,t)\|\le C\epsilon\log\epsilon.
 \end{align*} 
+\item Equation can be solved explicitly.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Application of the theory} 
-Consider the terminal time is $t = 0$ and the equation is satisfied in $(-\infty,0)\times \mathbb{R}^2$. Make an anstaz:
-\begin{align*}
-w(t,x,y) = \frac{x+y}{2}-\sqrt{-t}g(\frac{x-y}{\sqrt{-t}}).
-\end{align*}
-Then $g$ satisfies a Hermite ODE
-\begin{align*}
-g(z) - zg'(z) - 16g''(z)= 0,
-\end{align*}
-which can be solved explicitly.
-\vfill
-The optimal strategy 
-$$
-f = -2g'(\frac{x-y}{\sqrt{-t}}).
-$$
-\end{frame}
+%\begin{frame}
+%\frametitle{Application of the theory} 
+%Consider the terminal time is $t = 0$ and the equation is satisfied in $(-\infty,0)\times \mathbb{R}^2$. Make an anstaz:
+%\begin{align*}
+%w(t,x,y) = \frac{x+y}{2}-\sqrt{-t}g(\frac{x-y}{\sqrt{-t}}).
+%\end{align*}
+%Then $g$ satisfies a Hermite ODE
+%\begin{align*}
+%g(z) - zg'(z) - 16g''(z)= 0,
+%\end{align*}
+%which can be solved explicitly.
+%\vfill
+%The optimal strategy 
+%$$
+%f = -2g'(\frac{x-y}{\sqrt{-t}}).
+%$$
+%\end{frame}
 
 
 \begin{frame}
 \frametitle{Discussion}
 \begin{itemize}
 \item Stock prediction problem has a continuous-time limit. The PDE has a rather explicit solution. 
+\pause
 \item Problem is considered as a deterministic two-person game.
+\pause
 \item One can consider more complex situation, e.g., more experts, more intelligent experts, etc.
+\pause
 \item Dynamical programming principle can be hard to derive.
 \end{itemize}
 \end{frame}
@@ -570,8 +623,10 @@ $$
 \section{Stochastic Control}
 \begin{frame}
 \begin{itemize}
-\item The previous equation is the {\color{red}Hamilton-Jacobi-Bellman} equation from stochastic control. 
+\item In the previous example, we derive the PDE from {\color{red}Hamilton-Jacobi-Bellman} equation from stochastic control. 
+\pause
 \item In the discrete case, Markov decision process (MDP) is a discrete time stochastic control process. (Reinforcement Learning).   The value function satisfies a discrete Bellman equation.
+\pause
 \begin{itemize}
 \item Given a policy $\pi$ with infinite horizon for any state $x\in X$
 \begin{equation*}
@@ -595,13 +650,16 @@ V^\ast(x) = \max_{a\in A}\{R(x,a) + \gamma\sum_{x'\in X}P(x'|x,a)V_{\pi}(x')\}
 dX_s = b(X_s,a_s)\,ds + \sigma(X_s,a_s)\,dW_s,
 \end{align}
 where $W_s$ is Brownian motion and $a_s$ is control process.
+\pause
 \item Reward 
 \begin{align*}
 R(t,x,a) = \mathbb{E}\big[\int_t^Tf(X_s^{t,x},a_s)\,ds + g(X_T^{t,x})\big],
 \end{align*}
 where $X^{t,x}$ is the solution of \eqref{eq1} starting from $X_t = x$.
+\pause
 \item Value function 
 $$v(t,x) = \sup_{a\in \mathcal{A}}R(t,x,a).$$
+\pause
 \item HJB equation 
 $$\frac{\partial v}{\partial t} + \sup_{a\in \mathcal{A}}(L_a v + f(x,a)) = 0\quad \text{in} [0,T]\times \mathbb{R}^d,$$
 where $L_a$ is the infinitesimal generator of the process \eqref{eq1}. 
@@ -619,7 +677,7 @@ A classical example is
 \end{equation*}
 Let $W_t$ be a Brownian motion starting from $x$. Then 
 \begin{align*}
-\lim_{t\to 0}\frac{E^xu(W_t)-u(x)}{t} = \frac{1}{2}\Delta u\quad  (\text{by It\^{o}'s formula}). 
+\lim_{t\to 0}\frac{E^xu(W_t)-u(x)}{t} = \frac{1}{2}\Delta u.%\quad  (\text{by It\^{o}'s formula}). 
 \end{align*}
 General diffusion process
 $$L_a u = \frac{1}{2}Tr(\sigma \sigma^T D^2 u) = \frac{1}{2}\sum_{i,j=1}^da_{ij}D_{ij}u,$$ 
