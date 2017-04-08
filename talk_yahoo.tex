@@ -281,20 +281,31 @@ and $$u = g\quad \text{on}\quad S_1.$$
 
 \subsection{A simple example}
 \begin{frame}
+\begin{figure}
+\includegraphics[scale = 0.35]{figures/expert_problem.pdf}
+\end{figure}
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
 \frametitle{Gentle Start: a simple example}
 \begin{itemize}
 \item Set up:
 \begin{itemize}
 \item Predict an unknown sequence $y_1, y_2, \ldots,$ where $y_i\in\{0,1\}.$
-\pause
+%\pause
 \item $N$ experts provide advice $(f_{1,t},f_{2,t},\ldots, f_{N,t})$
-\pause
+%\pause
 \item A forecaster makes her guess $\hat{p}_t\in\{0,1\}$ for $y_t$ 
-\pause
+%\pause
 \item True $y_t$ is revealed and find if $\hat{p}_t = y_t$. 
-\pause
-\item Know that one of the experts makes no mistakes.
-\pause
+%\pause
+\item {\color{red}Know that one of the experts makes no mistakes.}
+%\pause
 \end{itemize}
 \item Goal: bound the number of the mistakes made by the forescaster
 \end{itemize}
@@ -658,10 +669,16 @@ where $C$ independent of $t$.
 
 \section{Stochastic Control}
 
+\begin{frame}
+\begin{figure}
+\includegraphics[scale  = 0.35]{figures/bellman_ml.pdf}
+\end{figure}
+\end{frame}
+
 
 \begin{frame}{Reinforcement Learning}
 \begin{figure}
-\includegraphics[scale = 0.5]{reinforcementlearning}
+\includegraphics[scale = 0.3]{reinforcementlearning}
 \end{figure}
 S: Set of states
 
@@ -675,9 +692,9 @@ R: Reward function. $\forall s_t,a_t$, $r_t = R(s_t,a_t)\in \mathbb{R}$
 
 \begin{frame}
 \begin{itemize}
-\item In the previous example, we derive the PDE from {\color{red}Hamilton-Jacobi-Bellman} equation of a optimal control problem. 
-\pause
-\item In the discrete case, Markov decision process (MDP) is a discrete time stochastic control process. (Reinforcement Learning).   The value function $v:S\to \mathbb{R}$ satisfies a discrete Bellman equation.
+%\item In the previous example, we derive the PDE from {\color{red}Hamilton-Jacobi-Bellman} equation of a optimal control problem. 
+%\pause
+\item Markov decision process (MDP) is a discrete time stochastic control process.   The value function $v:S\to \mathbb{R}$ satisfies a discrete Bellman equation.
 \pause
 \begin{itemize}
 \item Given a policy $\pi$ with infinite horizon for any state $x\in X$
