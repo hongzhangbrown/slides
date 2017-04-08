@@ -62,27 +62,29 @@
 \headcommand {\sectionentry {3}{Stochastic Control}{74}{Stochastic Control}{0}}
 \headcommand {\beamer@sectionpages {17}{73}}
 \headcommand {\beamer@subsectionpages {51}{73}}
-\headcommand {\slideentry {3}{0}{1}{74/76}{}{0}}
-\headcommand {\beamer@framepages {74}{76}}
-\headcommand {\slideentry {3}{0}{2}{77/80}{}{0}}
-\headcommand {\beamer@framepages {77}{80}}
-\headcommand {\sectionentry {4}{Elliptic PDEs}{81}{Elliptic PDEs}{0}}
-\headcommand {\beamer@sectionpages {74}{80}}
-\headcommand {\beamer@subsectionpages {74}{80}}
-\headcommand {\slideentry {4}{0}{1}{81/81}{}{0}}
-\headcommand {\beamer@framepages {81}{81}}
-\headcommand {\slideentry {4}{0}{2}{82/82}{}{0}}
+\headcommand {\slideentry {3}{0}{1}{74/74}{}{0}}
+\headcommand {\beamer@framepages {74}{74}}
+\headcommand {\slideentry {3}{0}{2}{75/77}{}{0}}
+\headcommand {\beamer@framepages {75}{77}}
+\headcommand {\slideentry {3}{0}{3}{78/81}{}{0}}
+\headcommand {\beamer@framepages {78}{81}}
+\headcommand {\sectionentry {4}{Elliptic PDEs}{82}{Elliptic PDEs}{0}}
+\headcommand {\beamer@sectionpages {74}{81}}
+\headcommand {\beamer@subsectionpages {74}{81}}
+\headcommand {\slideentry {4}{0}{1}{82/82}{}{0}}
 \headcommand {\beamer@framepages {82}{82}}
-\headcommand {\slideentry {4}{0}{3}{83/83}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{83/83}{}{0}}
 \headcommand {\beamer@framepages {83}{83}}
-\headcommand {\slideentry {4}{0}{4}{84/84}{}{0}}
+\headcommand {\slideentry {4}{0}{3}{84/84}{}{0}}
 \headcommand {\beamer@framepages {84}{84}}
-\headcommand {\slideentry {4}{0}{5}{85/85}{}{0}}
+\headcommand {\slideentry {4}{0}{4}{85/85}{}{0}}
 \headcommand {\beamer@framepages {85}{85}}
-\headcommand {\slideentry {4}{0}{6}{86/86}{}{0}}
+\headcommand {\slideentry {4}{0}{5}{86/86}{}{0}}
 \headcommand {\beamer@framepages {86}{86}}
-\headcommand {\beamer@partpages {1}{86}}
-\headcommand {\beamer@subsectionpages {81}{86}}
-\headcommand {\beamer@sectionpages {81}{86}}
-\headcommand {\beamer@documentpages {86}}
-\headcommand {\def \inserttotalframenumber {34}}
+\headcommand {\slideentry {4}{0}{6}{87/87}{}{0}}
+\headcommand {\beamer@framepages {87}{87}}
+\headcommand {\beamer@partpages {1}{87}}
+\headcommand {\beamer@subsectionpages {82}{87}}
+\headcommand {\beamer@sectionpages {82}{87}}
+\headcommand {\beamer@documentpages {87}}
+\headcommand {\def \inserttotalframenumber {35}}
