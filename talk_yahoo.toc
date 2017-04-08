@@ -4,4 +4,4 @@
 \beamer@subsectionintoc {2}{1}{A simple example}{20}{0}{2}
 \beamer@subsectionintoc {2}{2}{PDE approach of prediction problem}{51}{0}{2}
 \beamer@sectionintoc {3}{Stochastic Control}{74}{0}{3}
-\beamer@sectionintoc {4}{Elliptic PDEs}{81}{0}{4}
+\beamer@sectionintoc {4}{Elliptic PDEs}{82}{0}{4}

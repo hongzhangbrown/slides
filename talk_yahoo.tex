@@ -94,7 +94,7 @@
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
 
-\title[prediction and learning]{On PDE approach to some learning problems} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[prediction and learning]{On PDE approach to some machine learning problems} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Hong Zhang} % Your name
 \institute[Brown University] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
@@ -118,15 +118,31 @@ Applied Math, Brown University \\ % Your institution for the title page
 \begin{frame}
 Partial differential equations (PDEs) are used to describe many phenomenons.  Many famous PDEs are from physics.
 \begin{itemize}
-\item Heat: heat equation, $v$ tempature
+\item Heat: heat equation, $u$ tempature
+\begin{columns}
+\column{0.6\textwidth}
 \begin{equation*}
 \partial_t u = \sum_{i=1}^3\frac{\partial^2 u }{\partial x_i^2} = \Delta u
 \end{equation*}
+\column{0.4\textwidth}
+\begin{figure}
+\includegraphics[scale = 0.3]{heatdiffusion}
+%\caption{Viscous flow}
+\end{figure}
+\end{columns}
 \pause
 \item Fluid mechanics: Naiver-Stokes equation
+\begin{columns}
+\column{0.6\textwidth}
 \begin{align*}
 \partial_t u + (u\cdot\nabla)u - \Delta u = -\nabla p.
 \end{align*}
+\column{0.4\textwidth}
+\begin{figure}
+\includegraphics[scale = 0.25]{viscosflow}
+%\caption{Viscous flow}
+\end{figure}
+\end{columns}
 \pause
 \item Quantum mechanics, electrodynamics, image processing,\ldots.
 \end{itemize} 
@@ -143,7 +159,7 @@ Partial differential equations (PDEs) are used to describe many phenomenons.  Ma
 \caption{Brownian Motion}
 \end{figure}
 \column{0.5\textwidth}
-Let $g:S_1 \rightarrow \mathbb{R}$. Let $W$ be a Brownian motion with $W_0 = x$. $W$ hits $\partial \Omega$ at $W_{\tau}$. Let $u(x) = \mathbb{E}^x[g(W_\tau)]$.
+$W_t$: a Brownian motion with $W_0 = x$. $W$ hits boundary at $W_{\tau}$.  $u(x) = \mathbb{E}^x[g(W_\tau)]$.
 Then $$\Delta u = 0,$$ 
 and $$u = g\quad \text{on}\quad S_1.$$
 
@@ -200,7 +216,7 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \end{frame}
 
 \begin{frame}
-\frametitle{Motivation}
+\frametitle{Why Online Learning?}
 \begin{itemize}
 \item Batch learning:
 \begin{itemize}
@@ -224,21 +240,37 @@ and $$u = g\quad \text{on}\quad S_1.$$
 
 \section{Prediction with Expert Advice}
 \begin{frame}
-\frametitle{The expert problem}
+\frametitle{Prediction With Expert Advices}
 \begin{itemize}
 \item Need: to make a decision every day
+\begin{columns}
+\column{0.7\textwidth}
 	\begin{itemize}
 	\item which stock to invest in
 	\item which route to drive home
 	\item \ldots
 	\end{itemize}
+\column{0.3\textwidth}
+\begin{figure}
+\includegraphics[scale = 0.25]{question}
+%\caption{Viscous flow}
+\end{figure}
+\end{columns}
 \pause
 \item Given: advice from a set of experts
+	\begin{columns}
+	\column{0.7\textwidth}
 	\begin{itemize}
 	\item financial adviser
 	\item Route 1, Route I-95, Route 295,\ldots
 	\item \ldots
 	\end{itemize}
+	\column{0.3\textwidth}
+	\begin{figure}
+\includegraphics[scale = 0.25]{experts}
+%\caption{Viscous flow}
+\end{figure}
+\end{columns}
 \pause	
 \item Question:
 	\underline{How to combine advice and make smart choices?}
@@ -281,7 +313,7 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \item update each wrong expert   $w_i^t = 0$
 \pause
 \end{itemize}
-{\bf Conclusion}: the number of mistakes made by the forecaster is bounded by {\color{red}$[\log_2 N]$}.
+{\bf Conclusion}: the number of mistakes made by the forecaster is bounded by {\color{red}$\lfloor\log_2 N\rfloor$}.
 \end{frame}
 
 \begin{frame}
@@ -298,7 +330,7 @@ w_m \le \frac{w_{m-1}}{2}\Longrightarrow w_m\le \frac{w_0}{2^m}.
 \pause
 \item $w_i =1$  for some $i$
 \begin{equation*}
-m\le [\log_2 N].
+m\le \lfloor\log_2 N\rfloor.
 \end{equation*}
 \end{itemize}
 
@@ -449,11 +481,11 @@ This problem was considered by Kohn using PDE technique.
 \begin{itemize}
 \item Instead of proposing an algorithm and then proving the asymptotic bound, PDE method focuses on the optimal strategy
 \pause
-\item Typical Goal: minimize the regret with respect to the best performing expert.
+\item Typical Goal: minimize the worst-case regret with respect to the best performing expert.
 \pause
 \item More general goal: minimize the worst case value of 
 $$\phi(\text{regret with respect to expert ``1'', regret with respect to expert ``-1''})$$
-at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \min\{x_1,x_2\}$.)
+at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \max\{x_1,x_2\}$.)
 \end{itemize}
 
 
@@ -464,7 +496,7 @@ at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \min\{x_1,x_2\}$.)
 Essentially,  the problem is an optimal control problem:
 \begin{itemize}
 \pause
-\item {\color{red}state space:}$$(x_1,x_2) = (\text{regret w.r.t ``1'' expert, regret w.r.t ``-1'' expert}).$$
+\item{\color{red}state space:}$$(x_1,x_2) = (\text{regret w.r.t.  expert ``1'', regret w.r.t.  expert ``-1''}).$$
 \pause
 \item {\color{red}control:} prediction $\hat{p}_t\in[-1,1]$ ({\color{blue}investor's purchase bounded by 1}) 
 \pause
@@ -484,10 +516,10 @@ for $t<T$, with final-time condition $v(x,T) = \phi(x).$
 \frametitle{Dynamical Programming Principle}
 Recall: {\color{red}$(x_1,x_2) = (\text{regret w.r.t. ``'1'' expert, regret w.r.t. ``-1'' expert})$}, where regret  = (investor's loss) - (expert's loss).
 \vfill
-If the investor buys ${p}$ shares and the market goes up, investor gains ${p}$, the 
-``+'' expert gains $1$, the ``-1'' expert gains $-1$. So the state moves from $(x_1,x_2)$ to $(x_1+(1-{p}),x_2+(-1-{p})).$
+If the investor buys $p$ shares and the market goes up, investor loss $-p$, the 
+``+'' expert loss $-1$, the ``-1'' expert loss $1$. So the state moves from $(x_1,x_2)$ to $(x_1-(1-{p}),x_2+(1+{p})).$
 \vfill
-Similarly, if investor buys ${p}$ shares  and market goes down, state move from $(x_1,x_2)$ to $(x_1-(1-{p}),x_2-(-1-{p})).$
+Similarly, if investor buys ${p}$ shares  and market goes down, state move from $(x_1,x_2)$ to $(x_1+(1-{p}),x_2-(1+{p})).$
 \vfill
 Hence the dynamical programming principle:
  \begin{align*}
@@ -580,7 +612,7 @@ The partial differential equation is the {\color{red}Hamilton-Jacobi-Bellman} eq
 \|w^\epsilon(x,t)-w(x,t)\|\le C\epsilon,
 \end{align*}
 where $C$ independent of $t$.
-\item if $\phi(x) = \min\{x_1,x_2\}$
+\item if $\phi(x) = \max\{x_1,x_2\}$
 \begin{align*}
 \|w^\epsilon(x,t)-w(x,t)\|\le C\epsilon\log\epsilon.
 \end{align*} 
@@ -620,12 +652,32 @@ where $C$ independent of $t$.
 \end{itemize}
 \end{frame}
 
+
+
+
+
 \section{Stochastic Control}
+
+
+\begin{frame}{Reinforcement Learning}
+\begin{figure}
+\includegraphics[scale = 0.5]{reinforcementlearning}
+\end{figure}
+S: Set of states
+
+A: Set of actions
+
+R: Reward function. $\forall s_t,a_t$, $r_t = R(s_t,a_t)\in \mathbb{R}$
+
+  
+\end{frame}
+
+
 \begin{frame}
 \begin{itemize}
-\item In the previous example, we derive the PDE from {\color{red}Hamilton-Jacobi-Bellman} equation from stochastic control. 
+\item In the previous example, we derive the PDE from {\color{red}Hamilton-Jacobi-Bellman} equation of a optimal control problem. 
 \pause
-\item In the discrete case, Markov decision process (MDP) is a discrete time stochastic control process. (Reinforcement Learning).   The value function satisfies a discrete Bellman equation.
+\item In the discrete case, Markov decision process (MDP) is a discrete time stochastic control process. (Reinforcement Learning).   The value function $v:S\to \mathbb{R}$ satisfies a discrete Bellman equation.
 \pause
 \begin{itemize}
 \item Given a policy $\pi$ with infinite horizon for any state $x\in X$
