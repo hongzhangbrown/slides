@@ -10,85 +10,97 @@
 \headcommand {\beamer@framepages {3}{5}}
 \headcommand {\slideentry {1}{0}{2}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{0}{3}{7/10}{}{0}}
-\headcommand {\beamer@framepages {7}{10}}
-\headcommand {\slideentry {1}{0}{4}{11/14}{}{0}}
-\headcommand {\beamer@framepages {11}{14}}
-\headcommand {\slideentry {1}{0}{5}{15/16}{}{0}}
-\headcommand {\beamer@framepages {15}{16}}
-\headcommand {\sectionentry {2}{Prediction with Expert Advice}{17}{Prediction with Expert Advice}{0}}
-\headcommand {\beamer@sectionpages {3}{16}}
-\headcommand {\beamer@subsectionpages {3}{16}}
-\headcommand {\slideentry {2}{0}{1}{17/19}{}{0}}
-\headcommand {\beamer@framepages {17}{19}}
-\headcommand {\beamer@subsectionentry {0}{2}{1}{20}{A simple example}}\headcommand {\beamer@subsectionpages {17}{19}}
-\headcommand {\slideentry {2}{1}{1}{20/20}{A simple example}{0}}
-\headcommand {\beamer@framepages {20}{20}}
-\headcommand {\slideentry {2}{1}{2}{21/21}{A simple example}{0}}
+\headcommand {\sectionentry {2}{Online Learning}{7}{Online Learning}{0}}
+\headcommand {\beamer@sectionpages {3}{6}}
+\headcommand {\beamer@subsectionpages {3}{6}}
+\headcommand {\slideentry {2}{0}{1}{7/7}{}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\slideentry {2}{0}{2}{8/11}{}{0}}
+\headcommand {\beamer@framepages {8}{11}}
+\headcommand {\slideentry {2}{0}{3}{12/15}{}{0}}
+\headcommand {\beamer@framepages {12}{15}}
+\headcommand {\slideentry {2}{0}{4}{16/17}{}{0}}
+\headcommand {\beamer@framepages {16}{17}}
+\headcommand {\slideentry {2}{0}{5}{18/20}{}{0}}
+\headcommand {\beamer@framepages {18}{20}}
+\headcommand {\slideentry {2}{0}{6}{21/21}{}{0}}
 \headcommand {\beamer@framepages {21}{21}}
-\headcommand {\slideentry {2}{1}{3}{22/26}{A simple example}{0}}
-\headcommand {\beamer@framepages {22}{26}}
-\headcommand {\slideentry {2}{1}{4}{27/30}{A simple example}{0}}
-\headcommand {\beamer@framepages {27}{30}}
-\headcommand {\slideentry {2}{1}{5}{31/33}{A simple example}{0}}
-\headcommand {\beamer@framepages {31}{33}}
-\headcommand {\slideentry {2}{1}{6}{34/37}{A simple example}{0}}
-\headcommand {\beamer@framepages {34}{37}}
-\headcommand {\slideentry {2}{1}{7}{38/40}{A simple example}{0}}
-\headcommand {\beamer@framepages {38}{40}}
-\headcommand {\slideentry {2}{1}{8}{41/42}{A simple example}{0}}
-\headcommand {\beamer@framepages {41}{42}}
-\headcommand {\slideentry {2}{1}{9}{43/45}{A simple example}{0}}
-\headcommand {\beamer@framepages {43}{45}}
-\headcommand {\slideentry {2}{1}{10}{46/46}{A simple example}{0}}
-\headcommand {\beamer@framepages {46}{46}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{47}{PDE approach of prediction problem}}\headcommand {\beamer@subsectionpages {20}{46}}
-\headcommand {\slideentry {2}{2}{1}{47/50}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {47}{50}}
-\headcommand {\slideentry {2}{2}{2}{51/53}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {51}{53}}
-\headcommand {\slideentry {2}{2}{3}{54/57}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {54}{57}}
-\headcommand {\slideentry {2}{2}{4}{58/58}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {58}{58}}
-\headcommand {\slideentry {2}{2}{5}{59/61}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {59}{61}}
-\headcommand {\slideentry {2}{2}{6}{62/63}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {62}{63}}
-\headcommand {\slideentry {2}{2}{7}{64/64}{PDE approach of prediction problem}{0}}
+\headcommand {\slideentry {2}{0}{7}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {2}{0}{8}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {2}{0}{9}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {2}{0}{10}{25/29}{}{0}}
+\headcommand {\beamer@framepages {25}{29}}
+\headcommand {\slideentry {2}{0}{11}{30/32}{}{0}}
+\headcommand {\beamer@framepages {30}{32}}
+\headcommand {\slideentry {2}{0}{12}{33/36}{}{0}}
+\headcommand {\beamer@framepages {33}{36}}
+\headcommand {\slideentry {2}{0}{13}{37/39}{}{0}}
+\headcommand {\beamer@framepages {37}{39}}
+\headcommand {\slideentry {2}{0}{14}{40/41}{}{0}}
+\headcommand {\beamer@framepages {40}{41}}
+\headcommand {\slideentry {2}{0}{15}{42/44}{}{0}}
+\headcommand {\beamer@framepages {42}{44}}
+\headcommand {\slideentry {2}{0}{16}{45/45}{}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\slideentry {2}{0}{17}{46/49}{}{0}}
+\headcommand {\beamer@framepages {46}{49}}
+\headcommand {\slideentry {2}{0}{18}{50/52}{}{0}}
+\headcommand {\beamer@framepages {50}{52}}
+\headcommand {\slideentry {2}{0}{19}{53/56}{}{0}}
+\headcommand {\beamer@framepages {53}{56}}
+\headcommand {\slideentry {2}{0}{20}{57/57}{}{0}}
+\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\slideentry {2}{0}{21}{58/60}{}{0}}
+\headcommand {\beamer@framepages {58}{60}}
+\headcommand {\slideentry {2}{0}{22}{61/62}{}{0}}
+\headcommand {\beamer@framepages {61}{62}}
+\headcommand {\slideentry {2}{0}{23}{63/63}{}{0}}
+\headcommand {\beamer@framepages {63}{63}}
+\headcommand {\slideentry {2}{0}{24}{64/64}{}{0}}
 \headcommand {\beamer@framepages {64}{64}}
-\headcommand {\slideentry {2}{2}{8}{65/65}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {65}{65}}
-\headcommand {\slideentry {2}{2}{9}{66/69}{PDE approach of prediction problem}{0}}
-\headcommand {\beamer@framepages {66}{69}}
-\headcommand {\sectionentry {3}{Stochastic Control}{70}{Stochastic Control}{0}}
-\headcommand {\beamer@sectionpages {17}{69}}
-\headcommand {\beamer@subsectionpages {47}{69}}
-\headcommand {\slideentry {3}{0}{1}{70/70}{}{0}}
+\headcommand {\slideentry {2}{0}{25}{65/68}{}{0}}
+\headcommand {\beamer@framepages {65}{68}}
+\headcommand {\sectionentry {3}{Stochastic Control and Reinforcement Learning}{69}{Stochastic Control and Reinforcement Learning}{0}}
+\headcommand {\beamer@sectionpages {7}{68}}
+\headcommand {\beamer@subsectionpages {7}{68}}
+\headcommand {\slideentry {3}{0}{1}{69/69}{}{0}}
+\headcommand {\beamer@framepages {69}{69}}
+\headcommand {\slideentry {3}{0}{2}{70/70}{}{0}}
 \headcommand {\beamer@framepages {70}{70}}
-\headcommand {\slideentry {3}{0}{2}{71/71}{}{0}}
+\headcommand {\slideentry {3}{0}{3}{71/71}{}{0}}
 \headcommand {\beamer@framepages {71}{71}}
-\headcommand {\slideentry {3}{0}{3}{72/73}{}{0}}
-\headcommand {\beamer@framepages {72}{73}}
-\headcommand {\slideentry {3}{0}{4}{74/77}{}{0}}
-\headcommand {\beamer@framepages {74}{77}}
-\headcommand {\sectionentry {4}{Elliptic PDEs}{78}{Elliptic PDEs}{0}}
-\headcommand {\beamer@sectionpages {70}{77}}
-\headcommand {\beamer@subsectionpages {70}{77}}
-\headcommand {\slideentry {4}{0}{1}{78/78}{}{0}}
-\headcommand {\beamer@framepages {78}{78}}
-\headcommand {\slideentry {4}{0}{2}{79/79}{}{0}}
-\headcommand {\beamer@framepages {79}{79}}
-\headcommand {\slideentry {4}{0}{3}{80/80}{}{0}}
-\headcommand {\beamer@framepages {80}{80}}
-\headcommand {\slideentry {4}{0}{4}{81/81}{}{0}}
-\headcommand {\beamer@framepages {81}{81}}
-\headcommand {\slideentry {4}{0}{5}{82/82}{}{0}}
+\headcommand {\slideentry {3}{0}{4}{72/72}{}{0}}
+\headcommand {\beamer@framepages {72}{72}}
+\headcommand {\slideentry {3}{0}{5}{73/73}{}{0}}
+\headcommand {\beamer@framepages {73}{73}}
+\headcommand {\slideentry {3}{0}{6}{74/74}{}{0}}
+\headcommand {\beamer@framepages {74}{74}}
+\headcommand {\slideentry {3}{0}{7}{75/75}{}{0}}
+\headcommand {\beamer@framepages {75}{75}}
+\headcommand {\slideentry {3}{0}{8}{76/77}{}{0}}
+\headcommand {\beamer@framepages {76}{77}}
+\headcommand {\slideentry {3}{0}{9}{78/81}{}{0}}
+\headcommand {\beamer@framepages {78}{81}}
+\headcommand {\sectionentry {4}{Hamilton-Jacobi-Bellman Equations}{82}{Hamilton-Jacobi-Bellman Equations}{0}}
+\headcommand {\beamer@sectionpages {69}{81}}
+\headcommand {\beamer@subsectionpages {69}{81}}
+\headcommand {\slideentry {4}{0}{1}{82/82}{}{0}}
 \headcommand {\beamer@framepages {82}{82}}
-\headcommand {\slideentry {4}{0}{6}{83/83}{}{0}}
+\headcommand {\slideentry {4}{0}{2}{83/83}{}{0}}
 \headcommand {\beamer@framepages {83}{83}}
-\headcommand {\beamer@partpages {1}{83}}
-\headcommand {\beamer@subsectionpages {78}{83}}
-\headcommand {\beamer@sectionpages {78}{83}}
-\headcommand {\beamer@documentpages {83}}
-\headcommand {\def \inserttotalframenumber {37}}
+\headcommand {\slideentry {4}{0}{3}{84/84}{}{0}}
+\headcommand {\beamer@framepages {84}{84}}
+\headcommand {\slideentry {4}{0}{4}{85/85}{}{0}}
+\headcommand {\beamer@framepages {85}{85}}
+\headcommand {\slideentry {4}{0}{5}{86/86}{}{0}}
+\headcommand {\beamer@framepages {86}{86}}
+\headcommand {\slideentry {4}{0}{6}{87/87}{}{0}}
+\headcommand {\beamer@framepages {87}{87}}
+\headcommand {\beamer@partpages {1}{87}}
+\headcommand {\beamer@subsectionpages {82}{87}}
+\headcommand {\beamer@sectionpages {82}{87}}
+\headcommand {\beamer@documentpages {87}}
+\headcommand {\def \inserttotalframenumber {44}}

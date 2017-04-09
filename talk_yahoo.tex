@@ -18,7 +18,10 @@
 \documentclass{beamer}
 \usepackage{amssymb}
 \usepackage{mathpazo}
-
+\usepackage{media9}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{charter}
 \mode<presentation> {
 
 % The Beamer class comes with a number of default slide themes
@@ -31,8 +34,8 @@
 %\usetheme{Bergen}
 %\usetheme{Berkeley}
 %\usetheme{Berlin}
-\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
+%\usetheme{Boadilla}
+\usetheme{CambridgeUS}
 %\usetheme{Copenhagen}
 %\usetheme{Darmstadt}
 %\usetheme{Dresden}
@@ -167,8 +170,10 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \end{columns}
 \end{frame}
 
+\section{Online Learning}
+\frame{\tableofcontents[currentsection]}
 \begin{frame}
-\frametitle{Online Learning: Examples}
+\frametitle{Online Learning: Example 1}
 
 \begin{columns}
 \column{0.5 \textwidth}
@@ -238,13 +243,13 @@ and $$u = g\quad \text{on}\quad S_1.$$
 
 
 
-\section{Prediction with Expert Advice}
 \begin{frame}
 \frametitle{Prediction With Expert Advices}
+
 \begin{itemize}
 \item Need: to make a decision every day
 \begin{columns}
-\column{0.7\textwidth}
+\column{0.5\textwidth}
 	\begin{itemize}
 	\item which stock to invest in
 	\item which route to drive home
@@ -259,7 +264,7 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \pause
 \item Given: advice from a set of experts
 	\begin{columns}
-	\column{0.7\textwidth}
+	\column{0.5\textwidth}
 	\begin{itemize}
 	\item financial adviser
 	\item Route 1, Route I-95, Route 295,\ldots
@@ -279,7 +284,19 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \end{frame}
 
 
-\subsection{A simple example}
+%\subsection{A simple example}
+\begin{frame}
+\begin{figure}
+\includegraphics[scale = 0.35]{figures/expert_problem_1.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+\includegraphics[scale = 0.35]{figures/expert_problem_2.pdf}
+\end{figure}
+\end{frame}
+
 \begin{frame}
 \begin{figure}
 \includegraphics[scale = 0.35]{figures/expert_problem.pdf}
@@ -317,36 +334,36 @@ and $$u = g\quad \text{on}\quad S_1.$$
 \begin{itemize}
 \item at time $t$, expert $i$ has weight $w_i^t$
 \pause
-\item originally, $w_i^0 = 1, \forall i\in[1,N]$
+\item originally, $w_i = 1, \forall i\in[1,N]$
 \pause
 \item prediction according to the weighted majority 
 \pause
-\item update each wrong expert   $w_i^t = 0$
+\item update expert's weight with wrong prediction $w_i = 0$
 \pause
 \end{itemize}
 {\bf Conclusion}: the number of mistakes made by the forecaster is bounded by {\color{red}$\lfloor\log_2 N\rfloor$}.
 \end{frame}
 
-\begin{frame}
-\frametitle{Proof}:
-\begin{itemize}
-\item let $w_m$ be the sum of the weight of all experts after the forecaster has made $m$ mistakes.
-\pause
-\item Initially, $w_0 = N.$
-\pause
-\item When the forecaster make her $m$th mistakes, at least half of the experts have been always correct make their first mistake
-\begin{equation*}
-w_m \le \frac{w_{m-1}}{2}\Longrightarrow w_m\le \frac{w_0}{2^m}.
-\end{equation*} 
-\pause
-\item $w_i =1$  for some $i$
-\begin{equation*}
-m\le \lfloor\log_2 N\rfloor.
-\end{equation*}
-\end{itemize}
+%\begin{frame}
+%\frametitle{Proof:}
+%\begin{itemize}
+%\item let $w_m$ be the sum of the weight of all experts after the forecaster has made $m$ mistakes.
+%\pause
+%\item Initially, $w_0 = N.$
+%\pause
+%\item When the forecaster make her $m$th mistakes, at least half of the experts have been always correct make their first mistake
+%\begin{equation*}
+%w_m \le \frac{w_{m-1}}{2}\Longrightarrow w_m\le \frac{w_0}{2^m}.
+%\end{equation*} 
+%\pause
+%\item $w_i =1$  for some $i$
+%\begin{equation*}
+%m\le \lfloor\log_2 N\rfloor.
+%\end{equation*}
+%\end{itemize}
 
 
-\end{frame}
+%\end{frame}
 \begin{frame}
 \frametitle{More general setting:}
 \begin{itemize}
@@ -362,7 +379,7 @@ m\le \lfloor\log_2 N\rfloor.
 \end{itemize}
 \pause
 \item Theorem: let $m_i^t$ be the number of mistakes made by expert $i$ till time $t$ and $m^t$ be the number of mistakes made by the WM algorithm. Then
-$$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$$
+$$m_t \le \frac{\log_2 N+m_{\text{best}}^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$$
 \begin{itemize}
 \item $m_t\le O(\log_2 N)+\text{constant}\times\text{best expert}$.
 \end{itemize}
@@ -373,6 +390,7 @@ $$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$
 
 \begin{frame}
 \frametitle{Remarks:}
+$$m_t\le O(\log_2 N)+\text{constant}\times\text{best expert}$$
 \begin{itemize}
 \item Linear dependence on the best expert
 \pause
@@ -397,10 +415,10 @@ $$m_t \le \frac{\log_2 N+m_i^t\log_2\frac{1}{\beta}}{\log_2 \frac{2}{1+\beta}}.$
 \begin{itemize}
 \item{For $t = 1$ to $T$ do}
 	\begin{itemize}
-	\item{receive instance $x_t\in X$ and advice $\hat{y}_{t,i}\in Y$, $i\in [1,N]$}
+	\item{feature $x_t\in X$ and advice $\hat{y}_{t,i}\in Y$, $i\in [1,N]$}
 	\item{predict $\hat{y}_t\in Y$}
-	\item{receive label $y_t\in Y$}
-	\item{incur loss $L(y_t,\hat{y}_t)$}
+	\item{true label $y_t\in Y$}
+	\item{loss $L(y_t,\hat{y}_t)$}
 	\end{itemize}
 \pause
 \item {\color{red}Objective:} minimize regret, i.e., difference of total loss incurred and that of best exeprt:
@@ -420,7 +438,7 @@ $$\lim_{T\to \infty}\frac{Regret(T)}{T} = 0.$$
 
 \begin{itemize}
 \item weight update:
-$$w_i^{t+1} \leftarrow w_i^t e^{-\eta_t L_{t,i}},$$
+$$w_i^{t+1} \leftarrow w_i^t e^{-{\color{red}\eta_t} L_{t,i}},$$
 where $L_{t,i}$ is total loss incurred by expert $i$ till time $t$
 \item prediction:
 $$\hat{y_t} = \frac{\sum_{i=1}^Nw_{i}^ty_{t,i}}{\sum_{i=1}^Nw_{i}^t}.$$ 
@@ -454,7 +472,7 @@ $$Regret(T) = O(\sqrt{(\log N) T}).$$
 \begin{frame}
 \frametitle{Active research area: literatures}
 \begin{itemize}
-\item Littlestone and Warmuth develop {\color{blue}weighted majority algorithm}
+\item Littlestone and Warmuth developed {\color{blue}weighted majority algorithm}
 \item Cesa-Bianchi et al. obtain minimax regret bounded by $\sqrt{(T/2)\log N}.$
 \item Cesa-Bianchi and Lugosi connected the regret with the Rademacher Complexity of the set of experts.
 \item Even-Dar et al. considered regret to the average
@@ -468,7 +486,7 @@ $$Regret(T) = O(\sqrt{(\log N) T}).$$
 
 
 
-\subsection{PDE approach of prediction problem}
+%\subsection{PDE approach of prediction problem}
 
 \begin{frame}
 \frametitle{A naive prediction problem (T.Cover, 1965)}
@@ -480,7 +498,7 @@ $$Regret(T) = O(\sqrt{(\log N) T}).$$
 \item At each time $t$, investor loss (or gain) $-\hat{p}_ty_t$. Cumulative loss (or gain)
 $$L(\hat{P},y_T) := -\sum_{t=1}^T\hat{p}_ty_t$$
 \pause
-\item Two naive experts: one always predicts 1 ({\color{blue}always goes up}); the other one always predicts -1({\color{blue}always goes down}).
+\item Two naive experts: one  predicts 1 ({\color{blue}always goes up}); the other one  predicts -1({\color{blue}always goes down}).
 \end{itemize}
 Cover proved $$Regret(T) = \Theta(\sqrt{T}).$$
 
@@ -495,7 +513,7 @@ This problem was considered by Kohn using PDE technique.
 \item Typical Goal: minimize the worst-case regret with respect to the best performing expert.
 \pause
 \item More general goal: minimize the worst case value of 
-$$\phi(\text{regret with respect to expert ``1'', regret with respect to expert ``-1''})$$
+$$\phi(\text{regret w.r.t. expert ``1'', regret w.r.t. expert ``-1''})$$
 at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \max\{x_1,x_2\}$.)
 \end{itemize}
 
@@ -504,7 +522,7 @@ at time $T$. (``Typical goal'' is $\phi(x_1,x_2) = \max\{x_1,x_2\}$.)
 
 \begin{frame}
 \frametitle{Two very simple experts}
-Essentially,  the problem is an optimal control problem:
+Essentially, deterministic two-player games (optimal control):
 \begin{itemize}
 \pause
 \item{\color{red}state space:}$$(x_1,x_2) = (\text{regret w.r.t.  expert ``1'', regret w.r.t.  expert ``-1''}).$$
@@ -514,7 +532,7 @@ Essentially,  the problem is an optimal control problem:
 \item {\color{red}value function:} $v(x,t) = $ optimal time $T$ result, starting from relative regrets $x = (x_1,x_2)$ at time $t$. 
 \end{itemize}
 
-{\color{red}Dynamical programming principle:}
+{\color{red}dynamic programming principle:}
 \begin{align*}
 v(x_1,x_2,t) &= \min_{|p|\le 1}\max_{b = \pm 1}v(\text{new position},t+1)\\
                     & = \min_{|p|\le 1}\max_{b = \pm 1}v(x_1 + b(1-p),x_2-b(1+p),t+1)		
@@ -524,18 +542,18 @@ for $t<T$, with final-time condition $v(x,T) = \phi(x).$
 \end{frame}
 
 \begin{frame}
-\frametitle{Dynamical Programming Principle}
-Recall: {\color{red}$(x_1,x_2) = (\text{regret w.r.t. ``'1'' expert, regret w.r.t. ``-1'' expert})$}, where regret  = (investor's loss) - (expert's loss).
-\vfill
-If the investor buys $p$ shares and the market goes up, investor loss $-p$, the 
-``+'' expert loss $-1$, the ``-1'' expert loss $1$. So the state moves from $(x_1,x_2)$ to $(x_1-(1-{p}),x_2+(1+{p})).$
-\vfill
-Similarly, if investor buys ${p}$ shares  and market goes down, state move from $(x_1,x_2)$ to $(x_1+(1-{p}),x_2-(1+{p})).$
-\vfill
-Hence the dynamical programming principle:
- \begin{align*}
- v(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1}v(x_1 + b(1-p),x_2-b(1+p),t+1).
- \end{align*}
+\frametitle{Dynamic Programming Principle}
+%Recall: {\color{red}$(x_1,x_2) = (\text{regret w.r.t. ``'1'' expert, regret w.r.t. ``-1'' expert})$}, where regret  = (investor's loss) - (expert's loss).
+%\vfill
+%If the investor buys $p$ shares and the market goes up, investor loss $-p$, the 
+%``+'' expert loss $-1$, the ``-1'' expert loss $1$. So the state moves from $(x_1,x_2)$ to $(x_1-(1-{p}),x_2+(1+{p})).$
+%\vfill
+%Similarly, if investor buys ${p}$ shares  and market goes down, state move from $(x_1,x_2)$ to $(x_1+(1-{p}),x_2-(1+{p})).$
+%\vfill
+%Hence the dynamic programming principle:
+% \begin{align*}
+% v(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1}v(x_1 + b(1-p),x_2-b(1+p),t+1).
+% \end{align*}
 
 \end{frame}
 
@@ -550,6 +568,21 @@ Hence the dynamical programming principle:
  \item Let $\xi_1,\xi_2,\ldots$ be i.i.d. random variable with mean 0 and variance 1. For each $n$, define a continuous-time stochastic processes $\{W_n(t)\}$
  $$W_n(t) = \frac{1}{\sqrt{n}}\sum_{1\le j\le [nt]}\xi_j.$$ 
 Then $W_n(t)\to W_t,$ where $W_t$ is a standard Brownian motion.
+%\includemedia[
+%  width=0.4\linewidth,
+%  height=0.3\linewidth,
+%  addresource=randomwalk.mp4,
+%  activate=pageopen,
+%  flashvars={
+%      source=randomwalk.mp4     % same path as in addresource!
+%     &autoRewind=true     % rewind after end
+%	&autoPlay=true
+%%     &loop=true           % loop video (doesn't make sense with autoRewind)
+%    }
+%    %deactivate=onclick,
+%  ]{}{randomwalk.mp4}
+\centering
+\animategraphics[loop,width=0.3\linewidth]{12}{randomwalk-}{0}{816}
 \end{itemize}
 
 \end{itemize}
@@ -558,7 +591,7 @@ Then $W_n(t)\to W_t,$ where $W_t$ is a standard Brownian motion.
 
 \begin{frame}
 \begin{itemize}
-\item So we consider a {\color{red}scaled} version of the problem: stock moves {\color{red}$\pm \epsilon$}, time steps are {\color{red}$ \epsilon^2$}, and the scaling of regret is ${\color{red}\epsilon^2}$. The value function is still the optimal time-T result.  The dynamical programming principle becomes
+\item So we consider a {\color{red}scaled} version of the problem: stock moves {\color{red}$\pm \epsilon$}, time steps are {\color{red}$ \epsilon^2$}, and the scaling of regret is ${\color{red}\epsilon^2}$. The value function is still the optimal time-T result.  The dynamic programming principle becomes
 \begin{align*}
 w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2)
 \end{align*}
@@ -570,10 +603,11 @@ w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilo
 
 \begin{frame}
 \title{PDE}
-The partial differential equation is the {\color{red}Hamilton-Jacobi-Bellman} equation associate with the optimal control problem.  Formal derivation 
+%The partial differential equation is the {\color{red}Hamilton-Jacobi-Bellman} equation associate with the optimal control problem.  Formal derivation 
 \begin{enumerate}
-	\item Use the Taylor's expansion to estimate
-	$$w(x_1+\epsilon b(1-p),x_2-\epsilon(1+p),t+\epsilon^2).$$
+	\item Use the Taylor's expansion to expand
+	$$w(x_1+\epsilon b(1-p),x_2-\epsilon(1+p),t+\epsilon^2),$$
+	then plug into the dynamic programming equation.
 	\item Investor choose $p$ to make $O(\epsilon)$ terms vanishes; this gives 
 	$$p = \frac{\partial_1 w - \partial_2 w}{\partial_1 w + \partial_2 w}. ({\color{red}\text{optimal strategy}})$$ 
 	\item The $O(\epsilon^2)$ are insensitive to $b = \pm 1$; they give the nonlinear PDE
@@ -583,7 +617,7 @@ The partial differential equation is the {\color{red}Hamilton-Jacobi-Bellman} eq
 \end{frame}
 %\begin{frame}
 %\frametitle{More detailed derivation of the PDE}
-%Dynamical programming principle:
+%dynamic programming principle:
 %$$w^\epsilon(x_1,x_2,t) = \min_{|p|\le 1}\max_{b = \pm 1} w^\epsilon(x_1 + \epsilon b(1-p),x_2-\epsilon b(1+p),t+\epsilon^2)$$
 %Taylor's expansion:
 %\begin{align*}
@@ -659,7 +693,7 @@ where $C$ independent of $t$.
 \pause
 \item One can consider more complex situation, e.g., more experts, more intelligent experts, etc.
 \pause
-\item Dynamical programming principle can be hard to derive.
+\item dynamic programming principle can be hard to derive.
 \end{itemize}
 \end{frame}
 
@@ -667,7 +701,29 @@ where $C$ independent of $t$.
 
 
 
-\section{Stochastic Control}
+\section{Stochastic Control and Reinforcement Learning}
+\frame{\tableofcontents[currentsection]}
+\begin{frame}
+\begin{figure}
+\includegraphics[scale  = 0.35]{figures/bellman_ml_1.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}
+\includegraphics[scale  = 0.35]{figures/bellman_ml_2.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}
+\includegraphics[scale  = 0.35]{figures/bellman_ml_3.pdf}
+\end{figure}
+\end{frame}
+\begin{frame}
+\begin{figure}
+\includegraphics[scale  = 0.35]{figures/bellman_ml_4.pdf}
+\end{figure}
+\end{frame}
+
 
 \begin{frame}
 \begin{figure}
@@ -737,7 +793,7 @@ where $L_a$ is the infinitesimal generator of the process \eqref{eq1}.
 
 \end{frame}
 
-\section{Elliptic PDEs}
+\section{Hamilton-Jacobi-Bellman Equations}
 \begin{frame}
 \frametitle{Second-order Linear Elliptic PDEs}
 A classical example is 

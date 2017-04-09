@@ -1,7 +1,5 @@
 \beamer@endinputifotherversion {3.36pt}
 \beamer@sectionintoc {1}{Introduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Prediction with Expert Advice}{17}{0}{2}
-\beamer@subsectionintoc {2}{1}{A simple example}{20}{0}{2}
-\beamer@subsectionintoc {2}{2}{PDE approach of prediction problem}{47}{0}{2}
-\beamer@sectionintoc {3}{Stochastic Control}{70}{0}{3}
-\beamer@sectionintoc {4}{Elliptic PDEs}{78}{0}{4}
+\beamer@sectionintoc {2}{Online Learning}{7}{0}{2}
+\beamer@sectionintoc {3}{Stochastic Control and Reinforcement Learning}{69}{0}{3}
+\beamer@sectionintoc {4}{Hamilton-Jacobi-Bellman Equations}{82}{0}{4}
